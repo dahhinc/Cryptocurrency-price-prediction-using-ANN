@@ -16,22 +16,22 @@ from nltk.tokenize import WordPunctTokenizer
 from functools import reduce
  
 
-file = open("E:/USER/Documents/Python Scripts/tweets2.csv","w", encoding="utf-8")
+file = open("path/tweets2014.csv","w", encoding="utf-8")
 file.write("tweet_id,timestamp,text\n")
-d0 = dt.date(2015,1,1)
-d1 = dt.date(2015,12,31)
+d0 = dt.date(2014,1,1)
+d1 = dt.date(2014,12,31)
 delta = d1-d0
 for tweet in query_tweets("Bitcoin",100,d0,d1,delta.days,''):
     newtext = str(tweet.text).replace('"',"\\'")
     file.write(str(tweet.id)+","+str(tweet.timestamp)+",\""+newtext+"\"\n")
 file.close()
 
-tweet2014= pd.read_csv('E:/USER/Documents/Python Scripts/tweets1.csv', engine='python')
-tweet2015= pd.read_csv('E:/USER/Documents/Python Scripts/tweets2.csv', engine='python')
-tweet2016= pd.read_csv('E:/USER/Documents/Python Scripts/tweets3.csv', engine='python')
-tweet2017= pd.read_csv('E:/USER/Documents/Python Scripts/tweets4.csv', engine='python')
-tweet2018= pd.read_csv('E:/USER/Documents/Python Scripts/tweets5.csv', engine='python')
-tweet2019= pd.read_csv('E:/USER/Documents/Python Scripts/tweets6.csv', engine='python')
+tweet2014= pd.read_csv('path/tweets2014.csv', engine='python')
+tweet2015= pd.read_csv('path/tweets2015.csv', engine='python')
+tweet2016= pd.read_csv('path/tweets2016.csv', engine='python')
+tweet2017= pd.read_csv('path/tweets2017.csv', engine='python')
+tweet2018= pd.read_csv('path/tweets2018.csv', engine='python')
+tweet2019= pd.read_csv('path/tweets2019.csv', engine='python')
 
 data = pd.concat([tweet2014,tweet2015,tweet2016,tweet2017,tweet2018,tweet2019])
 
@@ -89,8 +89,8 @@ sns.distplot(data['compound'], bins=15, ax=ax)
 plt.show()
 
 #adding Bitcoin's data
-Bitcoin = pd.read_csv('H:/Downloads/Telegram Desktop/Bitcoin_data.csv', engine='python')
+Bitcoin = pd.read_csv('path/Bitcoin_data.csv', engine='python')
 
 Bitcoin= Bitcoin.merge(tweet_data, on = 'Date', how = 'left')
 # ready dataset for further analysis
-Bitcoin.to_csv('H:/Downloads/Telegram Desktop/Bitcoin.csv',index = False)
+Bitcoin.to_csv('path/Bitcoin.csv',index = False)
