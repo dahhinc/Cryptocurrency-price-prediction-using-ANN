@@ -92,7 +92,7 @@ decay = 0
 
 pred_colnum = 0
 
-rawdata = pandas.read_csv('path/Bitcoin.csv', engine='python')
+rawdata = pandas.read_csv('Bitcoin.csv', engine='python')
 rawdata = rawdata.dropna()
 rawdata["Price"] = rawdata["Price"].shift(-2)
 
