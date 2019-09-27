@@ -89,8 +89,8 @@ sns.distplot(data['compound'], bins=15, ax=ax)
 plt.show()
 
 #adding Bitcoin's data
-Bitcoin = pd.read_csv('path/Bitcoin_data.csv', engine='python')
+Bitcoin = pd.read_csv('Bitcoin_data.csv', engine='python')
 
 Bitcoin= Bitcoin.merge(tweet_data, on = 'Date', how = 'left')
 # ready dataset for further analysis
-Bitcoin.to_csv('path/Bitcoin.csv',index = False)
+Bitcoin.to_csv('Bitcoin.csv',index = False)
