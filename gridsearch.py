@@ -100,7 +100,7 @@ decay = 0
 #column number for Price
 pred_colnum = 0
 
-rawdata = pandas.read_csv('H:/Downloads/Telegram Desktop/Bitcoin.csv', engine='python')
+rawdata = pandas.read_csv('path/Bitcoin.csv', engine='python')
 rawdata = rawdata.dropna()
 rawdata["Price"] = rawdata["Price"].shift(-2)
 
@@ -161,7 +161,6 @@ def baseline_model (ep, learning_rate, unit_lstm, unit_rnn):
     model.add(Dense(1))
     model.compile(loss=quantile, optimizer=keras_adam)
     return model
-#tboard = TensorBoard(log_dir='C:/Users/Mary/Documents/crypto/logs/Trends', histogram_freq=0, batch_size=batch_size, write_graph=True, write_grads=False, write_images=False, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None, embeddings_data=None, update_freq='epoch')
 
 #loop for hyperparameters search
 def model_params( ep, learning_rate, unit_lstm, unit_rnn):
