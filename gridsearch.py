@@ -102,7 +102,7 @@ pred_colnum = 0
 
 rawdata = pandas.read_csv('path/Bitcoin.csv', engine='python')
 rawdata = rawdata.dropna()
-rawdata["Price"] = rawdata["Price"].shift(-2)
+rawdata["Price"] = rawdata["Price"].shift(-2) #to get two days ahead prediction you need to shift Price backwards
 
 
 
