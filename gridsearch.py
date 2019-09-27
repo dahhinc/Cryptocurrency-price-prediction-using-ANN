@@ -86,7 +86,7 @@ def clearData(data,skiprow):
 
 K.clear_session()
 
-#Set of parameters
+#Set hyperparameters
 
 tsteps = 1
 batch_size = 16
@@ -100,7 +100,7 @@ decay = 0
 #column number for Price
 pred_colnum = 0
 
-rawdata = pandas.read_csv('path/Bitcoin.csv', engine='python')
+rawdata = pandas.read_csv('Bitcoin.csv', engine='python')
 rawdata = rawdata.dropna()
 rawdata["Price"] = rawdata["Price"].shift(-2) #to get two days ahead prediction you need to shift Price backwards
 
