@@ -92,7 +92,7 @@ decay = 0
 
 pred_colnum = 0
 
-rawdata = pandas.read_csv('H:/Downloads/Telegram Desktop/Bitcoin.csv', engine='python')
+rawdata = pandas.read_csv('path/Bitcoin.csv', engine='python')
 rawdata = rawdata.dropna()
 rawdata["Price"] = rawdata["Price"].shift(-2)
 
@@ -180,7 +180,6 @@ print('Test Score in $: %.2f MAE' % (testScore))
 
 
 def mapee(y_true, y_pred):
-    #y_true, y_pred = numpy.array(y_true), numpy.array(y_pred)
     return 100 * numpy.sum(numpy.divide(numpy.abs(numpy.add(y_true, numpy.multiply(y_pred, -1))),y_pred))/y_true.shape[0]
 
 
@@ -190,20 +189,16 @@ testMAPE = mapee(testY_den[:-2,0], testPredict[:-2,0])
 print('Test mean absolute error : %.2f MAPE' % (testMAPE))
 
 
-
-
-
 # shift train predictions for plotting
 trainPredictPlot = numpy.empty_like(BTC)
 trainPredictPlot[:, :] = 0
-#trainPredictPlot[0:len(trainPredict), :1] = trainPredict
 # shift test predictions for plotting
 testPredictPlot = numpy.empty_like(BTC)
 testPredictPlot[:, :] = numpy.nan
 testPredictPlot[len(trainPredict)+1:len(trainPredict)+len(testPredict)+1, :1] = testPredict
 # plot baseline and predictions
 
-Bitcoin = pandas.read_csv('H:/Downloads/Telegram Desktop/Bitcoin.csv', engine='python')
+Bitcoin = pandas.read_csv('path/Bitcoin.csv', engine='python')
 Bitcoin = Bitcoin.dropna()
 Bitcoin["Price"] = Bitcoin["Price"].shift(-2)
 BTC = Bitcoin.values
